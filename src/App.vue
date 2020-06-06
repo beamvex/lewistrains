@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="app" ref="app">
   
     <v-navigation-drawer
       fixed
@@ -8,34 +8,34 @@
       app
     >
       <v-list dense>
-        <v-list-tile @click.stop="stationselected=null; paid = false">
-          <v-list-tile-action>
+        <v-list-item @click.stop="stationselected=null; paid = false">
+          <v-list-item-action>
             <v-icon>exit_to_app</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Select Destination</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile v-if="stationselected" @click.stop="paid = false">
-          <v-list-tile-action>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Select Destination</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-if="stationselected" @click.stop="paid = false">
+          <v-list-item-action>
             <v-icon>exit_to_app</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Pay Money</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile v-if="stationselected && paid">
-          <v-list-tile-action>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Pay Money</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-if="stationselected && paid">
+          <v-list-item-action>
             <v-icon>exit_to_app</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Printing</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Printing</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar
+    <v-app-bar
       color="blue-grey"
       dark
       fixed
@@ -43,7 +43,7 @@
       clipped-right
     >
       <v-toolbar-title>Lewis Trains</v-toolbar-title>
-    </v-toolbar>
+    </v-app-bar>
     
     <v-content v-if="!stationselected">
       <v-container fluid>
@@ -56,6 +56,7 @@
         </v-layout>
       </v-container>
       <v-container fluid >
+       why is this not working? {{ stations}}
         <v-layout justify-center align-center row wrap>
             <template v-for="station in stations" :item="item" >
             <v-flex md3 pa-2 :key="station" v-if="station.station.substring(0, 1) == selected">
@@ -102,13 +103,13 @@
     <v-footer color="blue-grey" class="white--text" app>
       <span>Lewis Trains Inc.</span>
       <v-spacer></v-spacer>
-      <span>&copy; 2019 Lewis Forster Inc.</span>
+      <span>&copy; 2020 Lewis Inc.</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
-import data from './data.js';
+import datax from './data.js';
 
 export default {
   name: 'App',
@@ -125,14 +126,14 @@ export default {
         'M', 'N', 'O', 'P', 'Q', 'R', 'S',
         'T', 'U', 'V', 'W', 'Y',
       ],
-      stations: data.stations,
+      stations: datax.stations,
       stationselected: null,
       paid: null,
   }),
 
   props: {
     source: String
-  },
+  }, 
 }
 </script>
 
